@@ -1,4 +1,10 @@
-const FETCH = async (api_route, method, body, functionThatCalled) => {
+const FETCH = async (
+  api_route,
+  method,
+  body,
+  headers = null,
+  functionThatCalled
+) => {
   functionThatCalled &&
     console.log(`${functionThatCalled} is fetching using the ${method} method`);
   const m = method.toUpperCase();
@@ -6,9 +12,12 @@ const FETCH = async (api_route, method, body, functionThatCalled) => {
   try {
     const response = await fetch(api_route, {
       method: m.toUpperCase(),
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: headers
+        ? headers
+        : {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
       body: m === "GET" ? null : JSON.stringify(b),
     });
     if (response.error || response.status !== 200 || response.err) {

@@ -144,11 +144,11 @@ export const DE_TITLEFY = (text, space = true) => {
   return newText;
 };
 
-export const DE_KEBABIFY = (text) => {
+export const DE_KEBABIFY = (text, replacementChar = "_") => {
   let newText = "";
   for (let i = 0; i < text.length; i++) {
     const char = text[i];
-    if (char !== "_") {
+    if (char !== replacementChar) {
       newText += char;
     } else {
       newText += " ";

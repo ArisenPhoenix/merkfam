@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Navigation from "../Merkurial/Components/Navigation/Navigation";
+// import Navigation from "../Merkurial/Components/Navigation/Navigation";
 
 export default function Home() {
   return (

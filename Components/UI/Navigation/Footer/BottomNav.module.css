@@ -1,0 +1,28 @@
+.Bottom {
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+  align-items: center;
+}
+
+.copyright {
+  text-align: center;
+  color: white;
+  margin: 0;
+}
+
+.dateDiv {
+  width: 24%;
+  margin: auto;
+  background-color: transparent;
+  text-align: center;
+}
+
+.buttonDiv {
+  width: 38%;
+  margin: auto;
+}
+
+.button {
+  min-width: fit-content !important;
+}

@@ -1,0 +1,13 @@
+.itemContainer {
+  display: block !important;
+  background-color: inherit;
+}
+
+.text:hover {
+  background-color: gray;
+  color: black;
+}
+
+.text {
+  color: white !important;
+}

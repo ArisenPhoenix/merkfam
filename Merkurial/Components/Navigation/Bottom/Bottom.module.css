@@ -20,11 +20,12 @@
 }
 
 .date {
+  background-color: black;
+  width: 100%;
   text-align: center;
   color: white;
   margin: 0;
   padding: 0;
-  vertical-align: baseline;
 }
 
 .dateDiv {
@@ -68,4 +69,8 @@
 .buttonContainer {
   width: 3rem;
   height: 3rem;
+}
+
+.copyrightDiv {
+  width: 100%;
 }

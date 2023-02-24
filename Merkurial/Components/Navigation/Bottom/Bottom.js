@@ -1,7 +1,5 @@
 import css from "./Bottom.module.css";
 import { useClass } from "../../../hooks/usehooks";
-import Head from "next/head";
-import Script from "next/script";
 import SocialMediaButton from "../../UI/Buttons/SocialMediaButton/SocialMediaButton";
 import { faLine } from "@fortawesome/free-brands-svg-icons/faLine";
 import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons/faFacebookSquare";
@@ -13,12 +11,6 @@ const Bottom = (props) => {
   const classes = useClass([props.className, css.bottomContainer]);
   return (
     <div className={classes}>
-      <Head>
-        <Script
-          src="https://kit.fontawesome.com/30d2b0e2da.js"
-          crossorigin="anonymous"
-        />
-      </Head>
       <div className={css.buttonContainer}>
         <SocialMediaButton
           icon={faFacebookSquare}
@@ -49,8 +41,8 @@ const Bottom = (props) => {
         />
       </div>
 
-      <div className={`${css.dateDiv} ${css.break}`}>
-        <p className={css.date}>Copyright {copyrightDate}</p>
+      <div className={`${css.copyrightDiv}`}>
+        <p className={css.date}>copyright {copyrightDate}</p>
         <p className={css.date}>www 🎲 merkurialphoenix 🎲 com</p>
       </div>
     </div>
@@ -58,30 +50,3 @@ const Bottom = (props) => {
 };
 
 export default Bottom;
-
-// const Bottom = (props) => {
-//   const classes = useClass([props.className, css.bottomContainer]);
-//   return (
-//     <div className={classes}>
-//       <div>
-//         {/* <SocialMediaButton
-//           icon={faFacebook}
-//           iconClass={css.icon}
-//           divClass={css.iconDiv}
-//         /> */}
-//       </div>
-//       <div>
-//         <h1>Bottom</h1>
-//       </div>
-//       <div>
-//         {/* <SocialMediaButton
-//           icon={solid("user-secret")}
-//           iconClass={css.icon}
-//           divClass={css.iconDiv}
-//         /> */}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Bottom;

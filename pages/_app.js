@@ -6,31 +6,31 @@ import { SSRProvider, ThemeProvider } from "react-bootstrap";
 config.autoAddCss = false;
 import { faFacebook, faLine } from "@fortawesome/free-brands-svg-icons";
 import { faBars, faPhone } from "@fortawesome/free-solid-svg-icons";
-// import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import Navigation from "../Merkurial/Components/Navigation/Navigation";
 import mercuryImg from "../public/mercury-planet2.jpeg";
 import { navItems } from "../Components/NavItems";
-// import { SAVED_DATA_PROVIDER } from "../store/Context/SAVE_DATA_CONTEXT";
-// import { USER_CONTEXT_PROVIDER } from "../Merkurial/store/Context/USER_CONTEXT/user_context";
-// Tell Font Awesome to skip adding the CSS automatically since it's being imported above
+import { Provider } from "react-redux";
 library.add(faBars, faFacebook, faLine, faPhone);
+import STORE from "../store/Redux/Store";
 
 const Marcure_Family_App = ({ Component, pageProps }) => {
   return (
-    <SSRProvider>
-      <ThemeProvider
-        breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm"]}
-        minBreakpoint="sm"
-      >
-        <Navigation
-          logoImg={mercuryImg}
-          logoAlt="Mercury Image"
-          navitems={navItems}
+    <Provider store={STORE}>
+      <SSRProvider>
+        <ThemeProvider
+          breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm"]}
+          minBreakpoint="sm"
         >
-          <Component {...pageProps} />
-        </Navigation>
-      </ThemeProvider>
-    </SSRProvider>
+          <Navigation
+            logoImg={mercuryImg}
+            logoAlt="Mercury Image"
+            navitems={navItems}
+          >
+            <Component {...pageProps} />
+          </Navigation>
+        </ThemeProvider>
+      </SSRProvider>
+    </Provider>
   );
 };
 

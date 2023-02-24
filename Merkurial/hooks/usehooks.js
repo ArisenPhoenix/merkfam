@@ -15,7 +15,7 @@ const SELECT = (selector) => {
   return useSelector((state) => (selector ? state[selector] : state));
 };
 
-export const useSelect = (sliceInfo, base = true, all = false) => {
+export const useSelect = (sliceInfo, base = true) => {
   let currentSelector = sliceInfo ? SELECT(sliceInfo) : SELECT();
   if (
     sliceInfo === null ||
