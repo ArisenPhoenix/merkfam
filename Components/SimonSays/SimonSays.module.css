@@ -28,11 +28,12 @@
   margin: auto;
 }
 
-.container {
+/* .container {
   display: block;
   width: 100%;
-  margin: auto;
-}
+  margin: 0;
+  padding: 0;
+} */
 
 .btn {
   margin: 25px;
@@ -74,11 +75,20 @@
   visibility: hidden;
 }
 
-.rowClass {
-  width: 100%;
+.littlePadding {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: -50px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (min-width: 200px) {
+  .btn {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+@media screen and (min-width: 500px) {
   .btn {
     height: 200px;
     width: 200px;

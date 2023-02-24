@@ -18,7 +18,10 @@ library.add(faBars, faFacebook, faLine, faPhone);
 const Marcure_Family_App = ({ Component, pageProps }) => {
   return (
     <SSRProvider>
-      <ThemeProvider>
+      <ThemeProvider
+        breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm"]}
+        minBreakpoint="sm"
+      >
         <Navigation
           logoImg={mercuryImg}
           logoAlt="Mercury Image"

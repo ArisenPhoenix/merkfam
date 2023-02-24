@@ -179,13 +179,9 @@ const SimonSays = () => {
         </button>
       )}
       <div className={css.container}>
-        <BootStrapContainer
-          fluid={true}
-          className={css.bootStrapContainer}
-          rowClass={css.rowClass}
-        >
-          <ROW xs={6} sm={12}>
-            <COLUMN>
+        <BootStrapContainer fluid={true}>
+          <ROW className={css.littlePadding}>
+            <COLUMN xs={6} sm={6}>
               <Button
                 colorClass={css.green}
                 color="green"
@@ -199,9 +195,9 @@ const SimonSays = () => {
                 disabled={!isPlayersTurn}
               />
             </COLUMN>
-          </ROW>
-          <ROW xs={6} sm={12}>
-            <COLUMN>
+            {/* </ROW>
+          <ROW className={css.littlePadding}> */}
+            <COLUMN xs={6} sm={6}>
               <Button
                 colorClass={css.yellow}
                 color="yellow"
