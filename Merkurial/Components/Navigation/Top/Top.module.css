@@ -1,0 +1,33 @@
+.topContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  height: 8% !important;
+  background-color: black;
+  color: white;
+  padding-right: 2%;
+  align-items: center;
+}
+
+.homeContainer {
+  width: auto;
+  display: flex;
+  align-self: flex-start;
+  justify-content: left;
+  padding-left: 0;
+}
+
+.left {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.dropped {
+  display: flex;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  justify-content: flex-end;
+}

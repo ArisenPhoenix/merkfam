@@ -1,0 +1,40 @@
+.navContainerMobile {
+  display: block;
+  position: fixed;
+  padding: 2%;
+  top: calc(7% - 2px);
+  left: 2%;
+  right: 0;
+
+  border-color: transparent;
+  border-style: groove;
+}
+
+.navContainer {
+  display: flex;
+  width: 100%;
+}
+
+.navButtonsContainerLeft,
+.navButtonsContainerRight {
+  display: flex;
+  /* flex-basis: content; */
+}
+
+.navButtonsContainerLeft {
+  width: 65%;
+  justify-content: flex-start;
+}
+
+.navButtonsContainerRight {
+  width: 35%;
+  flex-direction: row-reverse;
+}
+
+.buttonContainerLeft {
+  padding-left: 2%;
+}
+
+.buttonContainerRight {
+  padding-left: 2%;
+}

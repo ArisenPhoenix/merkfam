@@ -1,0 +1,89 @@
+/* .random {
+
+  color: #FC4F4F;
+  background-color: #FFBC80;
+  color: #FF9F45;
+  background-color: #F76E11;
+  background-color: #21325E;
+  background-color: #3E497A;
+  background-color: #F1D00A;
+  background-color: #F0F0F0;
+} */
+
+body {
+  background-color: black;
+  margin: 0 5% 0 5%;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.center {
+  text-align: center;
+  padding: 0;
+}
+
+
+.navigation-pagentry {
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.img-fluid {
+  max-width: 30%;
+  height: auto;
+}
+
+.top {
+  margin-left: 4%;
+  margin-right: 4%;
+}
+
+.top-left {
+  background-color: #F76E11;
+  color: white;
+  border-style: solid;
+
+}
+.top-right {
+  background-color: #F0F0F0;
+  color: #21325E;
+}
+
+.vertical-nav {
+  background-color: blue;
+  border-radius: 5%;
+  border-style: solid;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.vertical-nav:hover {
+  background-color: grey;
+}
+
+.vertical-nav-links {
+  color: #F0F0F0;
+}
+
+.dropdowns {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  padding-bottom: 3%;
+}
+
+.dropdown-items {
+  text-align: center;
+  z-index: 1;
+  background-color: white;
+  padding-bottom: 3%;
+}
+
+.dropdown-items:hover {
+  background-color: #FFBC80;
+}
+
+.btn-block {
+  padding: 0 0 0 0;
+  height: 50px;
+
+}

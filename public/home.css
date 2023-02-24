@@ -1,0 +1,326 @@
+
+
+body {
+  background-color: black;
+  margin: 0 5% 0 5%;
+  font-family: "Ubuntu", sans-serif;
+}
+h1 {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 6rem;
+}
+h6 {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 4rem;
+}
+
+p {
+  font-size: 3rem;
+}
+
+.sectionHeading {
+  height: 7rem;
+  margin-bottom: 2rem;
+}
+
+#linkNav {
+  height: 7rem;
+}
+
+.center {
+  text-align: center;
+  padding: 0;
+}
+
+.navigation-pagentry {
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.img-fluid {
+  max-width: 35%;
+  height: auto;
+  margin-left: 45%;
+  margin-right: 45%;
+}
+
+.top {
+  margin-left: 4%;
+  margin-right: 4%;
+}
+
+.top-left {
+  background-color: #337ab7;
+  color: white;
+  border-style: solid;
+
+}
+.top-right {
+  background-color: #f8f9fa;
+  color: #21325E;
+}
+
+.top-image {
+  width: 80%;
+}
+
+.vertical-nav {
+  background-color: red;
+  border-radius: 5%;
+  border-style: solid;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.vertical-nav:hover {
+  background-color: grey;
+}
+
+.vertical-nav-links {
+  color: #F0F0F0;
+}
+
+.center-text {
+  /* margin-left:  */
+  width: auto;
+}
+
+.dropdowns {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  /* margin-bottom: 5rem; */
+}
+
+.dropdown-items {
+  text-align: center;
+  z-index: 1;
+  background-color: white;
+  padding-bottom: 3%;
+}
+
+.dropdown-items:hover {
+  background-color: #FFBC80;
+}
+
+.btn-block {
+  padding: 0 0 0 0;
+  height: 50px;
+}
+
+.btn.tiles {
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  padding-right: 1rem;
+  color: black;
+}
+
+.postReadMore {
+  margin: auto;
+  color: #E45826;
+}
+
+.form {
+  width: 100%;
+}
+.form-group {
+  width: 300px;
+  height: 300px;
+}
+
+.fullTile {
+  margin: 0;
+  margin-top: 30px;
+  padding: 0;
+  text-align: center;
+}
+
+.titleText {
+  width: 250px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.titleText.top-right {
+  background-color: inherit;
+  width: 80%;
+}
+
+.compose {
+  margin-bottom: 30px;
+}
+
+.postMainText {
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 1.8rem;
+  margin: 10px;
+  color: #f8f9fa;
+}
+
+/* #postMainText {
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 2rem;
+  margin: 10px;
+  color: #f8f9fa;
+} */
+
+.navbar-header {
+  float: none;
+}
+.navbar-toggle {
+  display: block;
+}
+
+.blogTop {
+  line-height: 4rem;
+  text-align: center;
+  width: 100%;
+}
+
+.tiles {
+  margin-left: 40%;
+  margin-right: 40%;
+  width: 100%;
+  color: black;
+}
+
+.composeDiv {
+  border-color: black;
+  border-style: double;
+  border-width: thick;
+  background-color: #E45826;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+}
+
+.compose {
+  font-size: 4rem;
+  width: 300px;
+  height: auto;
+}
+
+.form-group {
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tops {
+  margin: 0;
+  padding: 0;
+}
+
+.container.top-right {
+  border-color: green;
+  border-style: double;
+  border-width: thick;
+  padding: 0;
+  margin: 0;
+}
+
+.blogHeaderDiv {
+  background-color: #337ab7;
+}
+
+.container-fluid {
+  margin: 10px;
+  padding: 10px;
+}
+
+.spacer {
+  border-style: inset;
+  border-color: black;
+  background-color: black;
+}
+
+.blogTileCanvas {
+  border-radius: 2%;
+  border-color: black;
+  border-style: double;
+}
+
+.navbar-light {
+  background-color: #E45826;
+  color: #f8f9fa;
+}
+
+.navbar-brand {
+  color: #f8f9fa;
+
+}
+
+.navbar-toggler-icon {
+  font-size: 3rem;
+  /* color: #f8f9fa; */
+}
+
+.ml-auto .dropdown-menu {
+  left: auto !important;
+  right: 0px;
+}
+
+.navPagentry {
+  color: #f8f9fa;
+  font-size: 3.5rem;
+  margin-right: 2%;
+}
+
+.linkNav {
+  margin-bottom: 3rem;
+}
+
+.blogInfo {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.footer {
+  background-color: #f8f9fa;
+  color: rgba(0, 0, 0, 0.5);
+  color: black;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.btn-lg {
+  text-align: center;
+  text-vertical: middle;
+  padding: 20px 0;
+  height: 75px;
+  width: 125px;
+  border: 3px solid;
+}
+
+.logOutButton {
+  margin: auto;
+  position: relative;
+  text-align: center;;
+  padding: 20px 0;
+  height: 75px;
+  width: 125px;
+  border: 3px solid;
+}
+
+.logOutButtonDiv {
+  text-align: center;
+}
+
+
+@media (max-width: 770px) {
+  .navPagentry {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 850px) {
+  .brand {
+    font-size: 3rem;
+  }
+}
