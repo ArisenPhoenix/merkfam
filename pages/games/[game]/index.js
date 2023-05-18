@@ -15,8 +15,8 @@ const Game = (props) => {
       return <Dicee game={router.asPath} />;
     case "simon-says":
       return <SimonSays />;
-    case "drum-kit":
-      return <DrumKit />
+    // case "drum-kit":
+    //   return <DrumKit />
     default:
       const lastGame = gameCtx.getLastGameState();
       
