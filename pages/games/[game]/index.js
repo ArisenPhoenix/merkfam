@@ -1,8 +1,8 @@
-import Dicee from "../../../Components/Dicee/Dicee";
+import Dicee from "../../../Components/Games/Dicee/Dicee";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import GAME_CONTEXT from "../../../store/Games_Context";
-import SimonSays from "../../../Components/SimonSays/SimonSays";
+import SimonSays from "../../../Components/Games/SimonSays/SimonSays";
 
 const Game = (props) => {
   const gameCtx = useContext(GAME_CONTEXT);
@@ -15,15 +15,11 @@ const Game = (props) => {
       return <Dicee game={router.asPath} />;
     case "simon-says":
       return <SimonSays />;
-
+    case "drum-kit":
+      return <DrumKit />
     default:
       const lastGame = gameCtx.getLastGameState();
-      console.log("LAST GAME: ", lastGame);
-    //   if (lastGame) {
-    //     router.push(lastGame);
-    //   } else {
-    //     router.push("/games");
-    //   }
+      
   }
 };
 

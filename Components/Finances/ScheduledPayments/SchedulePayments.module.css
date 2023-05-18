@@ -1,0 +1,35 @@
+.form {
+    width: 95%;
+    background-color: burlywood;
+    padding: 4% 2% 2% 2%;
+    /* height: fit-content; */
+    justify-content: space-evenly;
+    align-content: space-between;
+}
+
+.selection {
+    display:flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-content: space-between;
+    justify-content: center;
+}
+
+.selectClass {
+    justify-content: space-evenly;
+    align-content: space-between;
+    height: 2rem;
+}
+
+.mainInfo {
+    display: flex;
+}
+
+.mainInfoInput {
+    height: 2rem;
+    line-height: 2rem;
+}
+
+.mainInfoLabel {
+    width: 80%;
+}

@@ -5,9 +5,9 @@ const DELETE_TABLE = async (tableName) => {
   console.log("DELETE TABLE TABLE NAME: ", tableName);
   let text = `DROP TABLE ${tableName}`;
   const response = await FETCH(
-    "/api/table_queries",
+    "/api/postgre_neon",
     "DELETE",
-    text,
+    {query: text},
     "DELETE TABLE"
   );
   return response;

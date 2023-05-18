@@ -1,13 +1,13 @@
 import Head from "next/head";
-// import Navigation from "../Merkurial/Components/Navigation/Navigation";
+import AUTH_GUARD from "../Merkurial/Auth/AUTH";
 
-export default function Home() {
+export default Home = () => {
   return (
-    <div>
+    <AUTH_GUARD needsLoggedIn={true}>
       <Head>
         <title>MerkFam App</title>
         <meta name="description" content="Marcure Family" />
       </Head>
-    </div>
+    </AUTH_GUARD>
   );
 }

@@ -10,6 +10,7 @@ const ARGS = {
   primaryKey: "PRIMARY KEY",
   smallInt: "SMALLINT",
   int: "INT",
+  bool: "BOOLEAN",
   bigInt: "BIGINT",
   unique: "UNIQUE",
   foreignKey: "FOREIGN KEY",
@@ -18,6 +19,7 @@ const ARGS = {
   numeric73: "NUMERIC(7, 3)",
   numeric83: "NUMERIC(8, 3)",
   numeric: "NUMERIC",
+  unique: "UNIQUE"
 };
 
 export default ARGS;

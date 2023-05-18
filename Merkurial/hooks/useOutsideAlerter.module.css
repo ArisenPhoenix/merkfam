@@ -1,4 +1,16 @@
 .div {
-  padding: 0;
-  margin: 0;
+  display: inherit;
+  justify-content: inherit;
+  align-content: inherit;
+  justify-items: inherit;
+  align-items: inherit;
+  justify-self: inherit;
+  align-self: inherit;
+  position: inherit;
+  padding: 0 !important;
+  margin: 0 !important;
+  height: fit-content;
+  width: fit-content;
+  vertical-align: inherit;
+  text-align: inherit;
 }

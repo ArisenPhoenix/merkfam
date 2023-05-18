@@ -1,0 +1,23 @@
+.buttonsDiv {
+    display: flex;
+    width:100% !important;
+    height: fit-content;
+    margin: auto;
+    vertical-align: middle;
+    flex-direction: column;
+}
+
+.buttonDiv {
+    width: 100%;
+    justify-content: space-between;
+    align-content: space-between;
+    justify-items: space-between;
+    align-items: space-between;
+}
+
+.button {
+    width: 100%;
+    margin: auto;
+    height: 10vh;
+    border-radius: 20px;
+}

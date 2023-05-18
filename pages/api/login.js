@@ -1,98 +1,25 @@
-import { MongoClient, ServerApiVersion } from "mongodb";
+import QUERY from "../../Merkurial/SQL/QUERY";
+
 const handleLogin = async (req, res) => {
-  if (req.method === "POST") {
-    try {
-      if (err) {
-        return console.log("There was an error retreiving data from database.");
-      }
-    } catch {
-      console.log("No Errors Getting Data.");
-    }
+  const { method } = req
+  const { query, type, email, password } = req.body
 
-    const headers = {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-    };
-
-    const data = req.body;
-    // console.log("auth data below:");
-    // console.log(data);
-
-    // Auth User
-    console.log("trying to log user in now...");
-
-    const endpoint = process.env.SORS_FIREBASE_LOGIN_URI;
-
-    const options = {
-      method: "POST",
-      body: JSON.stringify({
-        displayName: data.displayName,
-        email: data.email,
-        password: data.password,
-        returnSecureToken: true,
-      }),
-    };
-
-    const response = await fetch(endpoint, options, headers)
-      .then((data) => {
-        return data;
-      })
-      .catch((error) => {
-        res.json(error);
-        next();
-      });
-
-    const body = await response.json();
-
-    if (body.error) {
-      console.log("error in body sending error back");
-      console.log(body.error);
-      res.send(body);
-    } else {
-      // Get From Mongo User DataBase
-      const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-      const uri = process.env.SORS_MONGO_URI;
-      const client = new MongoClient(uri, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        serverApi: ServerApiVersion.v1,
-      });
-      return new Promise((resolve, reject) => {
-        client.connect((err) => {
-          const usersCollection = client.db("sors").collection("usersDB");
-          if (err) {
-            // console.log("error connecting to database");
-            return err;
-          }
-
-          usersCollection
-            .findOne({
-              localId: body.localId,
-            })
-            .then(
-              (response) => {
-                // console.log("response");
-                // console.log(response);
-                res.statusCode = 200;
-                res.setHeader("Content-Type", "application/json");
-                res.setHeader("Cache-Control", "max-age=180000");
-                res.send({ ...response, ...data, ...body });
-                resolve();
-              },
-              (err) => {
-                console.log("The error in login wil be shown below:");
-                console.log(err);
-                return res.send(err);
-              }
-            )
-            .catch((err) => {
-              // console.log("an error occured at line 217");
-              console.log(err);
-            });
-        });
-      });
-    }
+  if (type === "GET"){
+    const r = await QUERY(query)
+    console.log("LOGIN RESPONSE: ", r)
+    return res.json({...r, ok: true})
+  } else if (method === "POST"){
+    const r = await QUERY(query)
+    console.log("SIGN UP RESPONSE: ", r)
+    return res.json({...r, ok: true})
+  } else if (method === "PUT") {
+    const r = await QUERY(query)
+    console.log("UPDATE USER DATA RESPONSE: ", r)
+    return res.json({...r, ok: true})
+  } else if (method === "DELETE"){
+    const r = await QUERY(query)
+    console.log("DELETE ACCOUNT RESPONSE: ", r)
+    return res.json({...r, ok: true})
   }
 };
 export default handleLogin;

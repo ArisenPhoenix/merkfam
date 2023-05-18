@@ -6,6 +6,14 @@
   background-color: rgba(250, 235, 215, 0.189);
 }
 
+.typeDivs {
+  display:flex;
+  padding:0;
+  margin-left: -20px;
+  width: fit-content;
+
+}
+
 .top,
 .bottom {
   width: 100%;
@@ -22,7 +30,5 @@
 }
 
 .bottom {
-  margin-top: auto;
-  justify-content: center;
-  align-items: flex-end;
+  justify-content: safe;
 }

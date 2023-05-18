@@ -1,0 +1,23 @@
+.leftSection, .rightSection {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.center {
+    justify-content: center;
+    width: 100%;
+}
+
+.leftSection {
+    justify-content: flex-start;
+    width: fit-content
+}
+
+.rightSection {
+    justify-content: flex-end;
+    width: fit-content
+}

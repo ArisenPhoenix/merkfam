@@ -7,37 +7,42 @@ import css from "./inputLabel.module.css";
 const INPUT_LABEL = (props) => {
   const lab = props?.label;
   const inp = props.input;
-  const labelClass = useClass([
-    lab && lab.className && lab.className,
-    css.label,
+  const labelClass = useClass([css.label,
+    lab && lab.className && lab.className
   ]);
-  const inputClass = useClass([inp.className, css.input]);
-  const divClass = useClass([props.className, css.main]);
+  const inputType = VERIFY_VALUE(inp?.type, "text")
+  const inputClass = useClass([inp?.className, css.input]);
+  const divClass = useClass([css.main, props?.className ]);
+  
   return (
-    <div className={divClass}>
-      {(!inp.hidden || !lab) && (
+    <div className={divClass} style={props.style}>
+      {(!inp?.hidden || !lab) && (
         <>
           <Label
-            text={VERIFY_VALUE(lab?.text, inp.text)}
-            required={props.required}
+            text={VERIFY_VALUE(lab?.text, inp?.text)}
+            required={props?.required ? props.required : false}
             className={labelClass}
           />
           <br></br>
         </>
       )}
-      <Input
-        text={VERIFY_VALUE(inp.text, lab?.text ? lab.text : inp.value)}
-        value={inp.value}
-        placeholder={VERIFY_VALUE(inp.placeholder, inp.text)}
-        required={VERIFY_VALUE(props.required)}
+      {<Input
+        text={VERIFY_VALUE(inp?.text, lab?.text ? lab.text : inp?.value)}
+        value={inp?.value}
+        placeholder={VERIFY_VALUE(inp?.placeholder, inp?.text)}
+        required={VERIFY_VALUE(props?.required)}
         onChange={inp.onChange}
-        ref={VERIFY_VALUE(inp.ref)}
-        name={VERIFY_VALUE(inp.name)}
+        ref={VERIFY_VALUE(inp?.ref)}
+        name={VERIFY_VALUE(inp?.name)}
         className={inputClass}
-        type={VERIFY_VALUE(inp.type, "text")}
-        readOnly={VERIFY_VALUE(props.readOnly, false)}
-        hidden={inp.hidden ? true : null}
-      />
+        type={inputType}
+        min={inputType==="number" ? inp.min : null}
+        max={inputType==="number" ? inp.max : null}
+        readOnly={VERIFY_VALUE(props?.readOnly, false)}
+        hidden={inp?.hidden ? true : null}
+        autoComplete={inp?.autoComplete ? inp.autoComplete : null}
+
+      />}
     </div>
   );
 };

@@ -1,12 +1,12 @@
 import css from "./FormMapper.module.css";
 import { Fragment } from "react";
-import FormLabelGroup from "./FormLabelGroup./FormLabelGroup";
+import FormLabelGroup from "./FormLabelGroup/FormLabelGroup";
 import { useClass } from "../../../hooks/usehooks";
 import { cleanTextForForm } from "../../../Helpers/Text/text";
 import React from "react";
 
 const FormMapper = (props) => {
-  const keys = Object.keys(props.data);
+  const keys = Object.keys(props?.data ? props.data : []);
   const mainClass = useClass([props.className]);
 
   return (

@@ -6,7 +6,7 @@ export const useClass = (listOfObjectClasses) => {
   const arr = listOfObjectClasses;
   let initial = " ";
   const newClass = arr.reduce((classes, currentClass) => {
-    return (classes += " " + currentClass);
+    return (classes += currentClass ? " " + currentClass : "");
   }, initial);
   return newClass;
 };

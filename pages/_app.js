@@ -7,30 +7,33 @@ config.autoAddCss = false;
 import { faFacebook, faLine } from "@fortawesome/free-brands-svg-icons";
 import { faBars, faPhone } from "@fortawesome/free-solid-svg-icons";
 import Navigation from "../Merkurial/Components/Navigation/Navigation";
-import mercuryImg from "../public/mercury-planet2.jpeg";
+import mercuryImg from "../public/logoButton.png";
 import { navItems } from "../Components/NavItems";
 import { Provider } from "react-redux";
 library.add(faBars, faFacebook, faLine, faPhone);
 import STORE from "../store/Redux/Store";
+import { MERKURIAL_CONTEXT_PROVIDER } from "../Merkurial/store/Context/MERKURIAL_CONTEXT/merkurial_context";
 
 const Marcure_Family_App = ({ Component, pageProps }) => {
   return (
-    <Provider store={STORE}>
-      <SSRProvider>
-        <ThemeProvider
-          breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm"]}
-          minBreakpoint="sm"
-        >
-          <Navigation
-            logoImg={mercuryImg}
-            logoAlt="Mercury Image"
-            navitems={navItems}
+    <MERKURIAL_CONTEXT_PROVIDER>
+      <Provider store={STORE}>
+        <SSRProvider>
+          <ThemeProvider
+            breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm"]}
+            minBreakpoint="sm"
           >
-            <Component {...pageProps} />
-          </Navigation>
-        </ThemeProvider>
-      </SSRProvider>
-    </Provider>
+            <Navigation
+              logoImg={mercuryImg}
+              logoAlt="Mercury Image"
+              navitems={navItems}
+            >
+              <Component {...pageProps} />
+            </Navigation>
+          </ThemeProvider>
+        </SSRProvider>
+      </Provider>
+    </MERKURIAL_CONTEXT_PROVIDER>
   );
 };
 

@@ -1,5 +1,5 @@
 import css from "./Top.module.css";
-import { useClass, useWindow } from "../../../hooks/usehooks";
+import { useClass } from "../../../hooks/usehooks";
 import React, { useContext } from "react";
 import DropDownButton from "./DropDownContainer/DropDownButton/DropDownButton";
 import LogoButton from "../NavButtons/LogoButton";
@@ -15,8 +15,7 @@ const Top = (props) => {
   const [isDropped, toggleIsDropped, setIsDropped] = useToggle(false);
   const mainClass = useClass([props.className, css.topContainer]);
   const { isAdmin, isLoggedIn } = userCtx;
-  const { width } = useWindow();
-  const isMobile = width < 700;
+  const isMobile = props.isMobile
 
   const drop = () => {
     setIsDropped(false);
@@ -25,7 +24,7 @@ const Top = (props) => {
   return (
     <div className={mainClass}>
       <div className={css.left}>
-        <LogoButton href="/" src={props.logoImg} alt={props.logoAlt} />
+        {/* <LogoButton href="/" src={props.logoImg} alt={props.logoAlt} /> */}
         {!isMobile && <NavContainer navitems={navitems} />}
       </div>
 
@@ -47,6 +46,7 @@ const Top = (props) => {
           </OutsideAlerter>
         </div>
       )}
+      
     </div>
   );
 };

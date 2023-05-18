@@ -5,10 +5,10 @@ import useToggle from "../../../../hooks/Toggle";
 
 const FormLabelGroup = (props) => {
   const args = props.inputArgs;
-  const startingvalue = args.value;
-  const required = args.required ? args.required : false;
-  let type = args.type ? args.type : "text";
-  const on = args.autocomplete ? "on" : "off";
+  const startingvalue = args?.value ? args.value : null;
+  const required = args?.required ? args.required : false;
+  let type = args?.type ? args.type : "text";
+  const on = args?.autocomplete ? "on" : "off";
   let labelText = props.text;
   const [value, setValue] = useState(startingvalue);
   const [using, setUsing] = useState(true);
@@ -17,7 +17,7 @@ const FormLabelGroup = (props) => {
   useEffect(() => {
     if (using) {
       if (!isRendered) {
-        props.pullUpStates(setValue);
+        props && props.pullUpStates && props.pullUpStates(setValue);
         setRendered(true);
         setUsing(false);
       }

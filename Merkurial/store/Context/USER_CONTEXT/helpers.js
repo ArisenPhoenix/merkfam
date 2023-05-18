@@ -40,35 +40,12 @@ export const CHECK_LOGIN_INFO = (data) => {
   const job = data && data.job;
   const specialty = data && data.specialty;
   const o = {
-    isAdmin:
-      job === "Owner" ||
-      job === "Software Engineer" ||
-      job === "Web Dev" ||
-      job === "WebDev" ||
-      specialty === "Web Dev" ||
-      specialty === "Software Engineer" ||
-      specialty === "WebDev",
-    isPatient: job === "Patient",
-    isWorker:
-      job === "Owner" ||
-      job === "Doctor" ||
-      job === "Software Engineer" ||
-      job === "Nurse" ||
-      job === "Driver" ||
-      job === "WevDev" ||
-      job === "Software Engineer" ||
-      job === "Web Dev",
-    userType: job,
+    userId: data.userId,
+    isAdmin: data.isAdmin,
+    isUser: data.isUser,
+    userName: data.userName,
     first_name: data.first_name,
     last_name: data.last_name,
-    userId: data[`${job.toLowerCase()}_id`],
-    id_string: `${job.toLowerCase()}_id`,
-    isLoggedIn:
-      data.job &&
-      data.first_name &&
-      data.last_name &&
-      data[`${job.toLowerCase()}_id`] &&
-      true,
   };
 
   return o;

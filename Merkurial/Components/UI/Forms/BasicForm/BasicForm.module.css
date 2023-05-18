@@ -27,3 +27,15 @@
   border-radius: 10px;
   border-color: black;
 }
+
+.flex {
+  display: flex;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+}

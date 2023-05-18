@@ -3,7 +3,7 @@ import {
   SAVE_TO_LOCAL_STORAGE,
   RETREIVE_FROM_LOCAL_STORAGE,
   REMOVE_FROM_LOCAL_STORAGE,
-} from "../API_STORAGE/STORAGe/HANDLE_STORAGE";
+} from "../API_STORAGE/STORAGE/HANDLE_STORAGE";
 
 let aTimer;
 
@@ -27,15 +27,15 @@ const callBack = async (callBackPointer) => {
 
 const useSetTimeOut = (timerObj, save = false) => {
   const {
-    timerName,
-    startTimeMS = 60000,
-    callBackPointer = null,
+    name,
+    time = 60000,
+    callBack = null,
     running = false,
     setRunning = () => {},
   } = timerObj;
 
   const resetTimer = () => {
-    callBackPointer && callBack(callBackPointer);
+    callBack && callBack(callBack);
     // Reset Timer
     setTimeLeft(startTimeMS);
     setRunning(false);

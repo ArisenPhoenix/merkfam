@@ -5,7 +5,7 @@ import {
 } from "../../../API_STORAGE/STORAGE/HANDLE_STORAGE";
 
 export const AdminContext = createContext({
-  admin: false,
+  isAdmin: false,
   email: "",
   firstName: "",
   lastName: "",
@@ -18,7 +18,7 @@ export const AdminContext = createContext({
 
 const AdminContextProvider = (props) => {
   const defaultState = {
-    admin: false,
+    isAdmin: false,
     email: "",
     firstName: "",
     lastName: "",
@@ -56,16 +56,16 @@ const AdminContextProvider = (props) => {
   };
 
   useEffect(() => {
-    if (!creds.admin) {
+    if (!creds.isAdmin) {
       const credentials = RETREIVE_FROM_LOCAL_STORAGE("admin");
-      if (credentials?.admin) {
+      if (credentials?.isAdmin) {
         setCredentials(credentials);
       }
     }
   }, []);
 
   const adminContextValue = {
-    admin: creds.admin,
+    isAdmin: creds.isAdmin,
     email: creds.email,
     firstName: creds.firstName,
     lastName: creds.lastName,

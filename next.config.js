@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  env: "./.env.local",
   reactStrictMode: true,
   swcMinify: true,
+  typescript: {
+    ignoreBuildErrors: false,
+  }
 };
 
 // module.exports = nextConfig

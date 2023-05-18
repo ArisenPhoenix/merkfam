@@ -4,11 +4,13 @@ import { faEye } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const PASSWORD_BUTTON = (props) => {
-  const iconClasses = useClass([css.iconClass, props.className]);
+  const iconClasses = useClass([css.iconClass]);
   const divClasses = useClass([css.buttonDiv, props.className]);
   return (
     <div type="button" className={divClasses} onClick={props.onClick}>
-      <FontAwesomeIcon icon={faEye} className={iconClasses} />
+      <div className={css.buttonContainer}>
+        <FontAwesomeIcon icon={faEye} className={iconClasses} />
+      </div>
     </div>
   );
 };

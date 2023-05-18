@@ -1,32 +1,54 @@
 import { useContext, useEffect, useState } from "react";
 import USER_CONTEXT from "../store/Context/USER_CONTEXT/user_context";
 import { useRouter } from "next/router";
+import LoadingScreen from "../../Merkurial/Components/UI/LoadingScreen/LoadingScreen"
+
 
 const AUTH_GUARD = (props) => {
   const [canGo, setCanGo] = useState(false);
   const router = useRouter();
   const userCtx = useContext(USER_CONTEXT);
-  const isAdmin = userCtx.isAdmin;
-  const isLoggedIn = userCtx.isLoggedIn;
-  const isWorker = userCtx.isWorker;
-  const { needsAdmin, needsLoggedIn, needsWorker } = props;
+  const {isAdmin, isLoggedIn, isUser} = userCtx.userData
+  const { needsAdmin, needsLoggedIn, needsUser } = props;
 
   useEffect(() => {
-    if (needsAdmin && isAdmin) {
-      setCanGo(true);
-    } else if (needsWorker && isWorker) {
-      setCanGo(true);
-    } else if (needsLoggedIn && isLoggedIn) {
-      setCanGo(true);
-    } else {
-      router.push("/login");
+    switch (true) {
+      case isUser && !needsUser:
+        console.log("isUser && !needsUser")
+        setCanGo(true);
+        break;
+
+      case needsAdmin && isAdmin:
+        console.log("needsAdmin && isAdmin")
+        setCanGo(true)
+        break;
+
+      case needsUser && isUser:
+        console.log("needsUser && isUser")
+        setCanGo(true)
+        break;
+
+      case needsLoggedIn && isLoggedIn:
+        console.log("needsLoggedIn && isLoggedIn")
+        setCanGo(true)
+        break;
+
+      case !needsAdmin && !needsUser && !needsLoggedIn:
+        console.log("!needsAdmin && !needsUser && !needsLoggedIn")
+        setCanGo(true)
+        break;
+
+      default:
+        console.log("default")
+        router.push("/login");
+        break;
     }
-  }, [isAdmin, isLoggedIn, isWorker]);
+  }, [isAdmin, isLoggedIn, isUser]);
 
   if (canGo) {
     return props.children;
   } else {
-    return <h1>Loading</h1>;
+    return <LoadingScreen />;
   }
 };
 

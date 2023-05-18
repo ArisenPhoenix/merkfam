@@ -1,9 +1,10 @@
 import css from "./BlogCard.module.css";
-import TextBox from "../../../Components/UI/Text/TextBox";
+import TextBox from "../../../Merkurial/Components/UI/Basics/Text/TextBox"
 import { useSelect, useClass } from "../../../Merkurial/hooks/usehooks";
 import { useRouter } from "next/router";
 import { SAVE_TO_LOCAL_STORAGE } from "../../../Merkurial/API_STORAGE/STORAGE/HANDLE_STORAGE";
 import { linkify } from "../../../Merkurial/Helpers/Text/text";
+
 const BlogCard = (props) => {
   const transparentCardClass = useClass([css.blogCard]);
   return <div className={transparentCardClass}>{props.children}</div>;

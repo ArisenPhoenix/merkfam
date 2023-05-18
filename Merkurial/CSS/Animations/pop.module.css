@@ -9,3 +9,13 @@
 .lgPop:hover {
   width: 150%;
 }
+
+.pop {
+  cursor: inherit;
+}
+
+.pop:hover {
+  transition: all .1s ease-in;
+  transform: scale(1.05);
+  border: none;
+}

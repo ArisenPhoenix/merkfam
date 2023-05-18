@@ -1,5 +1,11 @@
 import { TitleFy } from "../../Helpers/Text/text";
 
+/**
+ * 
+ * @param {date} startDate the start date to filter from
+ * @param {date} endDate the end date to filter to - inclusive
+ * @returns 
+ */
 const filterByDate = (startDate, endDate) => {
   const isDev = process.env.NEXT_PUBLIC_IS_DEV === "true";
   if (isDev) {
@@ -8,10 +14,19 @@ const filterByDate = (startDate, endDate) => {
   return `AND date >= ('${startDate} 00:00:00'::date) AND date <= ('${endDate} 00:00:00'::date) `;
 };
 
+
+/**
+ * Creates a table based off an object containing column names as keys and SQL parameters as values in an array
+ * @param {*} name 
+ * @param {*} objOfColumnsAndOptions 
+ * @param {*} foreign FOREGIN KEY object containing: {table: "tableName", column: "columnName"}
+ * @param {*} startingText The Option For Createing The Table Such as CREATE TABLE IF NOT EXISTS etc.
+ * @returns 
+ */
 const CREATE_TABLE_FUNC = (
   name,
   objOfColumnsAndOptions,
-  foreign = [{ table: "", column: "" }],
+  foreignKeys = null,
   startingText
 ) => {
   if (typeof name !== "string") {
@@ -23,22 +38,35 @@ const CREATE_TABLE_FUNC = (
   const obj = objOfColumnsAndOptions;
   const objKeys = Object.keys(obj);
   let primary;
-  let foreignKeyWord = [];
+  // let foreignKeyWord = [];
+  let foreginKeyText = ""
   let text = `${startingText} "${name}" (`;
   for (let key = 0; key < objKeys.length; key++) {
-    const currentKey = objKeys[key];
+    const currentKey = objKeys[key].trim();
     text += `"${currentKey}" `; // added a space
     const keyData = obj[currentKey];
+    
     for (let k2 = 0; k2 < keyData.length; k2++) {
-      const current = keyData[k2];
-      const space = key === objKeys.length - 1 ? "" : " ";
-      if (current.toUpperCase() == "PRIMARY KEY") {
-        primary = currentKey.trim();
-      } else if (current.toUpperCase() == "FOREIGN KEY") {
-        foreignKeyWord.push(currentKey.trim());
-        text += " ";
+      const currentArg = keyData[k2].trim();
+      const currentUP = currentArg.toUpperCase()
+
+      if (currentUP == "PRIMARY KEY") {
+        if (primary){
+          throw new Error("SQL Tables May Only Have Up To 1 Primary Key")
+        }
+        primary = currentKey;
+
+      } else if (currentUP == "FOREIGN KEY") {
+        if (!foreignKeys){
+          throw new Error("Foreign Keys Argument Missing")
+        }
+        foreginKeyText += ", ";
+        const foreignKey = `FOREIGN KEY ("${currentKey}") `;
+        foreginKeyText +=
+          foreignKey +
+          `REFERENCES ${foreignKeys[currentKey].table}(${foreignKeys[currentKey].column})`;
       } else {
-        text += current.trim() + space;
+        text += currentArg + " ";
       }
       if (k2 == keyData.length - 1) {
         text = text.trim();
@@ -49,53 +77,61 @@ const CREATE_TABLE_FUNC = (
 
   let primaryKey = `PRIMARY KEY ("${primary}")`;
   text += primaryKey;
-  if (foreignKeyWord.length > 0) {
-    foreignKeyWord.forEach((foreigner, index) => {
-      text += ", ";
-      const foreignKey = `FOREIGN KEY ("${foreigner}") `;
-      text +=
-        foreignKey +
-        `REFERENCES ${foreign[index].table}(${foreign[index].column})`;
-    });
-  }
+  text += foreginKeyText
   text += `);`;
   return text;
 };
 
+
+/**
+ * Creates a Table If One With The Specified Named Doesn't Exist From A Table Constructor Object
+ * @param {*} name name of table
+ * @param {*} objOfColumnsAndOptions object containing keys of column names and values of options used for said keys column attributes VARCHAR etc.
+ * @param {*} foreign object containing the keys {table} and {column} in that table with values of the table name and the column name
+ * @returns a query string
+ */
 export const CONVERT_CONSTRUCTOR_TO_CREATE_TABLE_IF_NOT_EXISTS = (
-  name,
+  tablename,
   objOfColumnsAndOptions,
-  foreign = [{ table: "", column: "" }]
+  foreignKeys = [{ table: "", column: "" }]
 ) => {
   const text = CREATE_TABLE_FUNC(
-    name,
+    tablename,
     objOfColumnsAndOptions,
-    foreign,
+    foreignKeys,
     "CREATE TABLE IF NOT EXISTS"
   );
   return text;
 };
 
+
+/**
+ * Creates a Table From A Table Constructor Object
+ * @param {*} name name of table
+ * @param {*} objOfColumnsAndOptions object containing keys of column names and values of options used for said keys column attributes VARCHAR etc.
+ * @param {*} foreignKeys object containing the keys {table} and {column} in that table with values of the table name and the column name
+ * @returns a query string
+ */
 const CONVERT_CONSTRUCTOR_TO_CREATE_TABLE = (
   name,
   objOfColumnsAndOptions,
-  foreign = [{ table: "", column: "" }]
+  foreignKeys = [{ table: "", column: "" }]
 ) => {
   const text = CREATE_TABLE_FUNC(
     name,
     objOfColumnsAndOptions,
-    foreign,
+    foreignKeys,
     "CREATE TABLE"
   );
   return text;
 };
 
 export default CONVERT_CONSTRUCTOR_TO_CREATE_TABLE;
-
-export const CONVERT_WORKER_TO_ADD = (tableName, workerClassInfo) => {
+ 
+export const CONVERT_WORKER_TO_ADD = (tableName, classInfo) => {
   let id = "";
   id = tableName + "_id";
-  let values = Object.keys(workerClassInfo);
+  let values = Object.keys(classInfo);
   let text = `INSERT INTO "${tableName}" (${id}, `;
   values.forEach((value, index) => {
     const space = index === values.length - 1 ? " " : ", ";
@@ -103,7 +139,7 @@ export const CONVERT_WORKER_TO_ADD = (tableName, workerClassInfo) => {
   });
   text += `) VALUES (DEFAULT, `;
   values.forEach((value, index) => {
-    const actualValue = `'${workerClassInfo[value]}'`;
+    const actualValue = `'${classInfo[value]}'`;
     const space = index === values.length - 1 ? "" : ", ";
     text += actualValue + space;
   });
@@ -111,13 +147,33 @@ export const CONVERT_WORKER_TO_ADD = (tableName, workerClassInfo) => {
   return text;
 };
 
+export const CONVERT_DEBT_TO_ADD =(tableName, debtClassInfo) => {
+  let id = "";
+  id = tableName + "_id";
+  let keys = Object.keys(debtClassInfo);
+  let text = `INSERT INTO "${tableName}" (${id}, `;
+  keys.forEach((key, index) => {
+    const space = index === keys.length - 1 ? " " : ", ";
+    text += key + space;
+  });
+  text += `) VALUES (DEFAULT, `;
+  keys.forEach((key, index) => {
+    const value = `'${debtClassInfo[key]}'`;
+    console.log("VALUE: ", value)
+    console.log("KEY: ", key)
+    const space = index === keys.length - 1 ? "" : ", ";
+    text += key + space;
+  });
+  text += `);`;
+  return text;
+}
+
 export const CONVERT_USER_TO_RETREIVE = (tableName, userInfo) => {
   const password = userInfo.password;
   const email = userInfo.email;
-  const firstName = userInfo.firstName;
-  const job = userInfo.job;
+
   let text = `SELECT * FROM "${tableName}" `;
-  text += `WHERE "password"='${password}' AND "email"='${email}' AND "first_name"='${firstName}' AND "job"='${job}' `;
+  text += `WHERE "password"='${password}' AND "email"='${email}' `;
   return text;
 };
 
@@ -197,7 +253,8 @@ export const CONVERT_GET_HOURLY_EARNINGS = (
   text += `ORDER BY "date", "start_time"`;
   return text;
 };
-// CONVERT_GET_CALL_EARNINGS;
+
+
 export const CONVERT_GET_ALL_EARNINGS = (workerType, id) => {
   const title = TitleFy(workerType);
   const job = workerType.toLowerCase();

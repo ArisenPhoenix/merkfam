@@ -1,8 +1,7 @@
-import { useState, useRef, useEffect } from "react";
+import { useState} from "react";
 import css from "./FormLabelGroup.module.css";
 
 const SimpleFormLabelGroup = (props) => {
-  const thisRef = useRef(null);
   const input = props.input;
   const label = props.label;
   const autocomplete = input.autoComplete ? "on" : "off";
@@ -15,7 +14,7 @@ const SimpleFormLabelGroup = (props) => {
     const name = e.target.name;
     setInputValue(currentValue);
     const newObj = { [name]: inputValue };
-    // props.onChange && props.onChange(newObj);
+    props.onChange && props.onChange(newObj);
   };
 
   return (

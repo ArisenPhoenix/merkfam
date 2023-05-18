@@ -13,16 +13,18 @@ export const matchObjectSequence = (object, objectToMatchAgainst) => {
   return fittedObject;
 };
 
-export const matchArraySequence = (array, arrayToMatchAgainst) => {
-  console.log("ARRAY: ", array, "ARRAY TO MATCH: ", arrayToMatchAgainst);
-};
+// export const matchArraySequence = (array, arrayToMatchAgainst) => {
+//   console.log("ARRAY: ", array, "ARRAY TO MATCH: ", arrayToMatchAgainst);
+// };
 
 export const matchObjectSequenceAgainstArray = (object, array) => {
   const matchedObject = {};
 
-  array.forEach((item, index) => {
+  array.forEach((item) => {
     if (object[item]) {
       matchedObject[item] = object[item];
+    } else {
+      return false;
     }
   });
   return matchedObject;

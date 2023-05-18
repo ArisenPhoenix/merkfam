@@ -58,6 +58,8 @@ export class Person {
   name() {
     return this.constructor.name;
   }
+
+  
 }
 
 export const personTableConstructor = () => {

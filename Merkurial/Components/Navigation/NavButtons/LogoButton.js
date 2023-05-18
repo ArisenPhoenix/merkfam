@@ -20,7 +20,7 @@ const LogoButton = (props) => {
         alt={props.alt}
         onClick={route}
         priority
-        placeholder="blur"
+        placeholder="empty"
         sizes="(max-width: 50px)"
         className={css.image}
         fill

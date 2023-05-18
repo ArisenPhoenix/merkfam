@@ -1,4 +1,3 @@
-import Link from "../../../Next/Link/Link";
 import css from "./NavButton.module.css";
 import { useClass } from "../../../hooks/usehooks";
 import { useRouter } from "next/router";

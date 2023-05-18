@@ -1,6 +1,6 @@
-import Label from "../Label/Label";
+import Label from "./Label/Label";
 import css from "./InputGroup.module.css";
-import Input from "../Input/Input";
+import Input from "./Input/Input";
 import React from "react";
 
 const InputGroupSameLine = (props) => {
@@ -12,11 +12,11 @@ const InputGroupSameLine = (props) => {
   return (
     <div>
       <div className={css.labelDiv}>
-        <Label text={l.text} className={labelClasses} />
+        <Label text={l?.text ? l.text: props.text} className={labelClasses} />
       </div>
       <div className={css.inputDiv}>
         <Input
-          placeholder={props.text ? props.text : i.text}
+          placeholder={i?.text ? i.text: props.text}
           className={inputClasses}
         />
       </div>

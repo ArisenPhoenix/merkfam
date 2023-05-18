@@ -10,9 +10,19 @@
 }
 
 .divClass {
-  border: none;
-  width: 100%;
-  margin: auto;
+  width: inherit;
+  height: inherit;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.center {
   text-align: center;
 }
 

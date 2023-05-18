@@ -21,11 +21,11 @@ class DiceeState {
 
 export const GAME_CONTEXT_PROVIDER = (props) => {
   const [lastGameState, setLastGameState] = useState({});
-  console.log("LAST GAME STATE: ", lastGameState);
+  // console.log("LAST GAME STATE: ", lastGameState);
   const saveLastGameState = (state) => {
     setLastGameState(state);
     const r = SAVE_TO_LOCAL_STORAGE(state, "mostRecentGame");
-    print("Save Response", r);
+    // print("Save Response", r);
   };
 
   const getLastGameState = () => {
