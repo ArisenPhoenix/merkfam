@@ -6,7 +6,7 @@ import css from "./SchedulePayments.module.css"
 import HEADING from "../../../Merkurial/Components/UI/SectionHeaders/Headers/HEADING"
 import SQL_TABLE from "../../../Merkurial/SQL/OBJECT_CLASS/SQL"
 import { useMessage } from "../../../Merkurial/hooks/useMessage"
-import { debtSchema, userSchema } from "../../schemas"
+import { debtSchema } from "../../../schemas"
 
 const ScheduledPayments = (props) => {
     const types = ["Credit Card", "Loan", "Insurance", "Gas", "Utilities", "Food", "Shopping", "Vice", "General"]
@@ -61,15 +61,10 @@ const ScheduledPayments = (props) => {
 
         if (DebtTable.hasTable){
             const debt = DebtTable.newRow(data)
-            console.log("DEBT PROPERTIES: \n", debt.properties())
-            // const query = debt.getAddQueryString("users", "user_id")
-            // console.log("QUERY: \n ", query)
-            // const addResponse = await debt.addDebt()
-            // console.log("ADD RESPONSE: ", addResponse)
+            // console.log("DEBT PROPERTIES: \n", debt.properties())
+            const addResponse = await debt.addDebt()
+            console.log("ADD RESPONSE: ", addResponse)
         }
-
-        // const getTableR = await Table.GET_TABLE()
-        // console.log("GET TABLE RESPONSE: ", getTableR)
     }
 
     return (
